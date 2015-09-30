@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.hostmanager.ignore_private_ip = false
     config.hostmanager.include_offline = true
 
-    config.vm.network :private_network, ip: "192.168.162.140"
+    config.vm.network :private_network, ip: "10.0.0.2"
 
 
     # Define folder to be synced

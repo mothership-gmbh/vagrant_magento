@@ -59,4 +59,12 @@ class php () {
     cwd     => "/usr/local/bin",
     command => "echo 'export XDEBUG_CONFIG=\"idekey=PHPSTORM\"' >> /home/vagrant/.bashrc",
   }
+
+  # enable mcrypt
+  exec {
+    "enabling_mcrypt":
+      command => 'php5enmod mcrypt && service apache2 reload',
+      require => Package['php5-mcrypt'],
+  }
+
 }

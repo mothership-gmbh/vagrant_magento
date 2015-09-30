@@ -99,8 +99,6 @@ docker rm $(docker ps -a -q)
 
 
 ###MariaDB (MySQL)
-
-
 Auf dieser virtuellen Maschine befindet sich kein klassicher MySQL-Daemon. Stattdessen wird MySQL über einen Docker-Container
 ausgeliefert. Genauer gesagt über ```paintedfox/mariadb```. Dieser Container ist sehr flexibel, erfordert aber wie alle
 Docker-Container ein Volume, um Daten persistent zu speichern. Damit das möglich ist, gibt es ein Verzeichnis 
