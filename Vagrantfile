@@ -9,10 +9,28 @@ if !File.exist?(config_file)
     + ' and modify configuration variables as required for your development environment.'
 end
 
+# Based on https://stefanwrobel.com/how-to-make-vagrant-performance-not-suck
+# Give VM 1/4 system memory & access to all cpu cores on the host
+host = RbConfig::CONFIG['host_os']
+
+ # Give VM 1/4 system memory & access to all cpu cores on the host
+ if host =~ /darwin/
+   cpu_default = `sysctl -n hw.ncpu`.to_i
+   # sysctl returns Bytes and we need to convert to MB
+   mem_default = `sysctl -n hw.memsize`.to_i / 1024 / 1024 / 4
+ elsif host =~ /linux/
+   cpu_default = `nproc`.to_i
+   # meminfo shows KB and we need to convert to MB
+   mem_default = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024 / 4
+ else # sorry Windows folks, I can't help you
+   cpu_default = 2
+   mem_default = 2048
+ end
+
 CONFIG = YAML.load_file(config_file)
 
-cpu_core = CONFIG['cpu_core'] || 4
-ram      = CONFIG['ram']      || 2048
+cpu_core = CONFIG['cpu_core'] || cpu_default
+ram      = CONFIG['ram']      || mem_default
 ip       = CONFIG['ip']       || "10.0.0.2"
 path     = CONFIG['path']     || Dir.pwd
 
@@ -38,7 +56,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.hostmanager.include_offline   = true
 
     # This is only needed for the communication between host- and guest-system
-    config.vm.network :private_network, ip: "10.0.0.2"
+    config.vm.network :private_network, ip: ip
+
+    host = RbConfig::CONFIG['host_os']
+
 
     # The folder are synced via nfs. It is recommended to not use the shared folder
     # as the apache root directory. Just use it for file sharing. You do not want to
@@ -49,7 +70,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #v.gui = true
         v.vmx["memsize"]  = ram
         v.vmx["numvcpus"] = cpu_core
-        v.name = config.vm.hostname
+        v.name            = config.vm.hostname
     end
 
     # "Provision" with hostmanager
