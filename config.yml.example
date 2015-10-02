@@ -1,6 +1,6 @@
 ---
-hostname: "mothership.vm"
-path: "C:/Users/MauriMayla/vagrant_magento/src"
-vagrant_path: "/srv/mothership.vm/www"
-cpu_core: 4
-ram: 2048
+hostname: "mothership.vm" #your hostname
+path: "C:/Users/MauriMayla/vagrant_magento/src" #your local  path you want to synchronize
+vagrant_path: "/srv/mothership.vm/www" #the path on your local machine you want to synchronize
+cpu_core: 4 #cpu of virtual machine
+ram: 2048 #ram of virtual machine

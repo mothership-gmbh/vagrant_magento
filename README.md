@@ -20,10 +20,6 @@ Install it with the following command.
 ```
 $ vagrant plugin install vagrant-hostmanager
 ```
-
-##VirtualBox
-There is also a provider for VMWare Fusion available, but this provider requires a valid license, which can be bought. For easier setup, you want to download any supported VirtualBox Version. Supported Versions are *[4.0](https://www.virtualbox.org/wiki/Download_Old_Builds_4_0)*, *[4.1](https://www.virtualbox.org/wiki/Download_Old_Builds_4_1)* and *[4.2](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2)*
-
 ##VMWare
 For using vmware provider use otherboxes
 
@@ -32,8 +28,15 @@ vagrant plugin install vagrant-vmware-fusion
 vagrant plugin license vagrant-vmware-fusion license.lic 
 ```
 
+##VirtualBox
+There is also a provider for VMWare Fusion available, but this provider requires a valid license, which can be bought. For easier setup, you want to download any supported VirtualBox Version. Supported Versions are *[4.0](https://www.virtualbox.org/wiki/Download_Old_Builds_4_0)*, *[4.1](https://www.virtualbox.org/wiki/Download_Old_Builds_4_1)* and *[4.2](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2)*
+
 #Quick-Start
-The easiest way to setup the VM, is to just change the hostname for your project.
+Start configuring some base parameters for the virtual machine:
+```
+mv config.yml.example config.yml
+```
+now just edit your setup in *config.yml*
 
 ##VMWare
 ```
