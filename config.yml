@@ -1,0 +1,5 @@
+---
+hostname: "mothership.vm"
+path: "/Users"
+cpu_core: 4
+ram: 2048

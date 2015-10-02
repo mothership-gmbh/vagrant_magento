@@ -1,5 +1,6 @@
 ---
 hostname: "mothership.vm"
-path: "/Users"
+path: "C:/Users/MauriMayla/vagrant_magento/src"
+vagrant_path: "/srv/mothership.vm/www"
 cpu_core: 4
 ram: 2048
