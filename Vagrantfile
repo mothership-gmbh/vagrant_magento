@@ -33,7 +33,7 @@ cpu_core = CONFIG['cpu_core'] || cpu_default
 ram      = CONFIG['ram']      || mem_default
 ip       = CONFIG['ip']       || "10.0.1.69"
 path     = CONFIG['path']     || Dir.pwd
-vagrant_path = CONFIG['vagrant_path']   ||  "/srv/" + config.vm.hostname + "/shared"
+#vagrant_path = CONFIG['vagrant_path']   ||  "/srv/" + config.vm.hostname + "/shared"
 
 VAGRANTFILE_API_VERSION = "2"
 
@@ -65,7 +65,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # The folder are synced via nfs. It is recommended to not use the shared folder
     # as the apache root directory. Just use it for file sharing. You do not want to
     # mix .modman symlinks, cache files etc with your repository, even with .gitignore
-    config.vm.synced_folder path, vagrant_path, type: "nfs", create: true
+    #config.vm.synced_folder path, vagrant_path, type: "nfs", create: true
 
     config.vm.provider :vmware_workstation do |v|
         #v.gui = true

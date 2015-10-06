@@ -24,8 +24,8 @@ $ vagrant plugin install vagrant-hostmanager
 For using vmware provider use otherboxes
 
 ```
-vagrant plugin install vagrant-vmware-fusion
-vagrant plugin license vagrant-vmware-fusion license.lic 
+vagrant plugin install vagrant-vmware-workstation
+vagrant plugin license vagrant-vmware-workstation license.lic
 ```
 
 ##VirtualBox
@@ -40,7 +40,7 @@ now just edit your setup in *config.yml*
 
 ##VMWare
 ```
-Start with vagrant up --provider vmware_fusion --debug
+Start with vagrant up --provider vmware_workstation --debug
 ```
 
 #Setup
