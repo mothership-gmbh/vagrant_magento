@@ -67,11 +67,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # mix .modman symlinks, cache files etc with your repository, even with .gitignore
     #config.vm.synced_folder path, vagrant_path, type: "nfs", create: true
 
-    config.vm.provider :vmware_fusion do |v|
-        v.gui = true
-        v.vmx["memsize"]  = ram
-        v.vmx["numvcpus"] = cpu_core
-        v.name            = config.vm.hostname
+    config.vm.provider :vmware_workstation do |v|
+      #  v.gui = true
+        v.vmx["memsize"]  = 2048
+        v.vmx["numvcpus"] = 6
     end
 
     # "Provision" with hostmanager
