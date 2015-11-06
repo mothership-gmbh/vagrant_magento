@@ -45,4 +45,12 @@ class php () {
     ensure => latest,
     require => [ Package['php5'], Class['server'], Package['apache2'] ],
   }
+
+  # Ensure Mcrypt is enabled
+  exec { "enablemcrypt":
+    path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ],
+    command => "php5enmod mcrypt",
+    notify => Service["apache2"],
+    require => Package["php5-common"],
+  }
 }
