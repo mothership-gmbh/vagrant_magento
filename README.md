@@ -178,6 +178,17 @@ docker run -d --name=mariadb -p 127.0.0.1:3306:3306 -v /opt/mariadb/data:/data -
 docker run -d -p 9200:9200 -p 9300:9300 -v /home/docker/elasticsearch:/data elasticsearch /usr/share/elasticsearch/bin/elasticsearch -Des.config=/data/elasticsearch.yml -Des.config=/data/elasticsearch.yml
 ```
 
+#Tipps und Befehle
+
+##local.xml und .htaccess relativ zum Projektordner anlegen
+Wenn man öfter neue Magento-Projekte initialisiert, ist es ziemlich nervig, immer diese Dateien neu anzulegen. In dem Fall gibt es den Befehl ```init_magento.sh``` der überall ausgeführt werden kann. Dieser legt relativ zum aktuellen Verzeichnis die Dateien ```.htaccess``` und ```app/etc/local.xml``` an.
+
+Beispiel:
+
+```
+cd /srv/project.vm/www
+init_magento.sh
+```
 
 
 ##SSH Key - Private Repositories
@@ -186,18 +197,23 @@ Falls du ein privates Repository hast, solltest du folgende Schritte ausführen:
 
 1. Auf dem Hostsystem deinen Private-Key auf dem Server übertragen
 
-```
-scp ~/.ssh/id_* vagrant@<hostname>:/home/vagrant
-```
+   ```
+   scp ~/.ssh/id_* vagrant@<hostname>:/home/vagrant
+   ```
+2. Alternativ einfach einen Alias anlegen, wenn man diesen Befehl öfter benötigt. In dem Beispiel hat die Vagrant-Maschineimmer die IP ```10.0.1.69```
+ 
+   ```
+   alias copy_key='scp ~/.ssh/id_rsa vagrant@10.0.1.69:/home/vagrant/.ssh/id_rsa'
+   ```
 
 2. Das nervige Passphrase beenden
 
-Einfach auf der Konsole folgende Befehle eingeben. Hilft sofort.
+   Oftmals wird man wegen dem SSH-Manager nach dem Passphrase gefragt. Einfach auf der Konsole folgende Befehle eingeben. Hilft sofort.
 
-```
-eval $(ssh-agent)
-ssh-add
-```
+    ```
+    eval $(ssh-agent)
+    ssh-add
+    ```
 
 
 

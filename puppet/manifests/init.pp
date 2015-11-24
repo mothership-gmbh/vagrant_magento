@@ -28,4 +28,5 @@ include redis
 include php
 include git
 include tools
+include magento
 include mailcatcher
