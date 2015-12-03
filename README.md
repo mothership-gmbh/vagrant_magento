@@ -125,6 +125,21 @@ und die Aktivierung des Scriptings.
 docker run -d -p 9200:9200 -p 9300:9300 -v /home/docker/elasticsearch:/data elasticsearch /usr/share/elasticsearch/bin/elasticsearch -Des.config=/data/elasticsearch.yml -Des.config=/data/elasticsearch.yml
 ```
 
+###Selenium
+
+Selenium wird auf dieser Maschine als HUB ausgeführt. Ein HUB ist ein zentraler Server, der alle Requests entgegennimmt und diese auf beliebige Maschinen verteilt. An diesem HUB können sich nun einzelne Clients registrieren, auf denen zb. Firefox oder Chrome laufen. Dies wird in der Regel gemacht, um bei einem dedizierten Server möglichst viele Tests gleichmäßig auf beliebige Maschinen zu verteilen.
+
+Unser Use-Case schaut nun so aus, dass auf der virtuellen Maschine ein Hub läuft. Hierzu gibt es bereits ein Skript ```selenium-start.sh```. Wichtig nach dem Start ist die Ausgabe, die eine Information enthält wie zum Beispiel: ```http://123.456.789.123:4444/grid/register ```. Dabei handelt es sich um die IP und Port des HUB, an denen sich die Clients registrieren können.
+
+Im Folgenden muss Selenium auf dem Client runtergeladen werden (http://www.seleniumhq.org/download/) , falls noch nicht geschehen. Dann einfach Selenium auf der lokalen Kiste wie folgt starten (Die variablen Teile entsprechend anpassen):
+
+```
+wget http://goo.gl/PJUZfa /<woduwillst>/<selenium_server_name>.jar
+java -jar <selenium_server_name>.jar -role node -hub http://<deinevm>:<deinport>/grid/register
+```
+
+Wenn du nun auf ```http://<deinevm>:<deinport>/grid/console``` gehst, sollte es verschiedene Einträge geben, die zeigen, dass du deinen Client erfolgreich verbunden hast.
+
 #Node
 
 
