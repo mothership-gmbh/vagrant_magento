@@ -41,8 +41,11 @@ mv config.yml.example config.yml
 now just edit your setup in *config.yml*
 
 ##VMWare
+
+Note: This command will only work on Mac OS X environment with VMWware Fusion installed. This will not work for linux-based environment which depends on the product ```vmware workstation```.
+
 ```
-Start with vagrant up --provider vmware_workstation --debug
+Start with vagrant up --provider vmware_fusion --debug
 ```
 
 #Setup
