@@ -21,11 +21,13 @@ Install it with the following command.
 $ vagrant plugin install vagrant-hostmanager
 ```
 ##VMWare
-For using vmware provider use otherboxes
+For using vmware provider. 
+
+NOTE: Check for the right provider based on your host machine. 
 
 ```
-vagrant plugin install vagrant-vmware-workstation
-vagrant plugin license vagrant-vmware-workstation license.lic
+vagrant plugin install vagrant-vmware-fusion
+vagrant plugin license vagrant-vmware-fusion license.lic
 ```
 
 ##VirtualBox
