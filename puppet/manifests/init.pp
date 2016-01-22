@@ -26,7 +26,8 @@ include server
 include apache
 include redis
 include php
+include php7
 include git
 include tools
-include magento
-include mailcatcher
+#include magento
+#include mailcatcher
