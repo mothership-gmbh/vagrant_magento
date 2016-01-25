@@ -20,14 +20,30 @@ class { "apache":
   document_root => "${document_root}${hostname}"
 }
 
+class { 'apt':
+  update => {
+    frequency => 'daily',
+  }
+}
+
+apt::ppa { 'ppa:ondrej/php-7.0':}
+
+package { [
+    'python-software-properties'
+  ]:
+  ensure  => 'installed',
+}
+
+
 # Standard library for some puppet packages
 include stdlib
 include server
-include apache
-include redis
+import "php"
 include php
-include php7
-include git
-include tools
+#include apache
+#include redis
+#include git
+#include tools
 #include magento
 #include mailcatcher
+

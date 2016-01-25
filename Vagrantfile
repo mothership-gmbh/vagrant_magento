@@ -31,7 +31,7 @@ CONFIG = YAML.load_file(config_file)
 
 cpu_core = CONFIG['cpu_core'] || cpu_default
 ram      = CONFIG['ram']      || mem_default
-ip       = CONFIG['ip']       || "10.0.1.69"
+ip       = CONFIG['ip']       || "10.0.1.100"
 path     = CONFIG['path']     || Dir.pwd
 #vagrant_path = CONFIG['vagrant_path']   ||  "/srv/" + config.vm.hostname + "/shared"
 
@@ -75,6 +75,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # "Provision" with hostmanager
     config.vm.provision :hostmanager
+
+
+    #shell provision
+    config.vm.provision :shell do |shell|
+      shell.inline = "puppet module install puppetlabs-apt"
+    end
 
     # Puppet!
     config.vm.provision :puppet do |puppet|
