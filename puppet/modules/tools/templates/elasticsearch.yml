@@ -169,12 +169,6 @@ discovery.zen.ping.multicast: false
 # Path to where plugins are installed:
 #
 #path.plugins: /path/to/plugins
-
-path:
-  logs: /data/log
-  data: /data/data
-
-
 #################################### Plugin ###################################
 
 # If a plugin listed here is not installed for current node, the node will not start.
@@ -389,3 +383,4 @@ http.port: 9200
 #http.jsonp.enable: true
 script.inline: on
 script.indexed: on
+network.host: 0.0.0.0
