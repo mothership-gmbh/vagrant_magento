@@ -22,10 +22,13 @@ class tools::docker {
   -> file { "/home/docker/elasticsearch":
     ensure => directory,
   }
+  -> file { "/home/docker/elasticsearch/config":
+    ensure => directory,
+  }
 
   # Create the configuration file
   -> file { "elasticsearch-config":
-    path => "/home/docker/elasticsearch/elasticsearch.yml",
+    path => "/home/docker/elasticsearch/config/elasticsearch.yml",
     ensure => present,
     content => template("tools/elasticsearch.yml")
   }
